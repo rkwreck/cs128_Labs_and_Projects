@@ -1,0 +1,37 @@
+Enter a word length: 
+--- Current State --- 
+You have 5 lives left.
+Word: - - 
+
+What is your next guess? 
+Invalid guess. Please enter a lowercase letter that you have not guessed yet : 
+The letter 'k' is not in the word.
+
+--- Current State --- 
+You have 4 lives left.
+Word: - - 
+
+What is your next guess? 
+Invalid guess. Please enter a lowercase letter that you have not guessed yet : 
+The letter 'l' is not in the word.
+
+--- Current State --- 
+You have 3 lives left.
+Word: - - 
+
+What is your next guess? 
+Invalid guess. Please enter a lowercase letter that you have not guessed yet : 
+The letter 'i' is in the word!
+
+--- Current State --- 
+You have 3 lives left.
+Word: i - 
+
+What is your next guess? 
+The letter 'd' is in the word!
+
+--- Current State --- 
+You have 3 lives left.
+Word: i d 
+
+You win! You guessed the word, id.

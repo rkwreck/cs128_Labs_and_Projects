@@ -1,0 +1,76 @@
+Select a mode, neutral or evil : Enter a word length: 
+--- Current State --- 
+You have 5 lives left.
+Word: - - - - - - - - - - 
+
+What is your next guess? 
+The letter 'i' is not in the word.
+
+--- Current State --- 
+You have 4 lives left.
+Word: - - - - - - - - - - 
+
+What is your next guess? 
+The letter 'o' is not in the word.
+
+--- Current State --- 
+You have 3 lives left.
+Word: - - - - - - - - - - 
+
+What is your next guess? 
+The letter 'u' is not in the word.
+
+--- Current State --- 
+You have 2 lives left.
+Word: - - - - - - - - - - 
+
+What is your next guess? 
+The letter 'a' is not in the word.
+
+--- Current State --- 
+You have 1 lives left.
+Word: - - - - - - - - - - 
+
+What is your next guess? 
+The letter 'e' is in the word!
+
+--- Current State --- 
+You have 1 lives left.
+Word: - e - - - e - - e - 
+
+What is your next guess? 
+The letter 'r' is in the word!
+
+--- Current State --- 
+You have 1 lives left.
+Word: - e - - - e - - e r 
+
+What is your next guess? 
+The letter 's' is in the word!
+
+--- Current State --- 
+You have 1 lives left.
+Word: - e s - s e - - e r 
+
+What is your next guess? 
+The letter 't' is in the word!
+
+--- Current State --- 
+You have 1 lives left.
+Word: - e s t s e - - e r 
+
+What is your next guess? 
+The letter 'b' is in the word!
+
+--- Current State --- 
+You have 1 lives left.
+Word: b e s t s e - - e r 
+
+What is your next guess? 
+The letter 'l' is in the word!
+
+--- Current State --- 
+You have 1 lives left.
+Word: b e s t s e l l e r 
+
+You win! You guessed the word, bestseller.

@@ -1,0 +1,76 @@
+Enter a word length: 
+--- Current State --- 
+You have 5 lives left.
+Word: - - - - - - - - - - 
+
+What is your next guess? 
+The letter 'i' is not in the word.
+
+--- Current State --- 
+You have 4 lives left.
+Word: - - - - - - - - - - 
+
+What is your next guess? 
+The letter 'r' is in the word!
+
+--- Current State --- 
+You have 4 lives left.
+Word: - - - - - - - - r - 
+
+What is your next guess? 
+The letter 'f' is in the word!
+
+--- Current State --- 
+You have 4 lives left.
+Word: f - - - - - - - r - 
+
+What is your next guess? 
+The letter 'l' is in the word!
+
+--- Current State --- 
+You have 4 lives left.
+Word: f l - - - l - - r - 
+
+What is your next guess? 
+The letter 'u' is in the word!
+
+--- Current State --- 
+You have 4 lives left.
+Word: f l u - - l - - r - 
+
+What is your next guess? 
+The letter 'g' is in the word!
+
+--- Current State --- 
+You have 4 lives left.
+Word: f l u g - l - - r - 
+
+What is your next guess? 
+The letter 'h' is in the word!
+
+--- Current State --- 
+You have 4 lives left.
+Word: f l u g - l h - r - 
+
+What is your next guess? 
+The letter 'o' is in the word!
+
+--- Current State --- 
+You have 4 lives left.
+Word: f l u g - l h o r - 
+
+What is your next guess? 
+The letter 'n' is in the word!
+
+--- Current State --- 
+You have 4 lives left.
+Word: f l u g - l h o r n 
+
+What is your next guess? 
+The letter 'e' is in the word!
+
+--- Current State --- 
+You have 4 lives left.
+Word: f l u g e l h o r n 
+
+You win! You guessed the word, flugelhorn.

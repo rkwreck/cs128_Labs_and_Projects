@@ -1,0 +1,57 @@
+Enter a word length: cappuccino
+
+--- Current State --- 
+You have 5 lives left.
+Word: - - - - - - - - - - 
+
+What is your next guess? 
+The letter 'i' is in the word!
+
+--- Current State --- 
+You have 5 lives left.
+Word: - - - - - - - i - - 
+
+What is your next guess? 
+The letter 'r' is not in the word.
+
+--- Current State --- 
+You have 4 lives left.
+Word: - - - - - - - i - - 
+
+What is your next guess? 
+The letter 'f' is not in the word.
+
+--- Current State --- 
+You have 3 lives left.
+Word: - - - - - - - i - - 
+
+What is your next guess? 
+The letter 'l' is not in the word.
+
+--- Current State --- 
+You have 2 lives left.
+Word: - - - - - - - i - - 
+
+What is your next guess? 
+The letter 'u' is in the word!
+
+--- Current State --- 
+You have 2 lives left.
+Word: - - - - u - - i - - 
+
+What is your next guess? 
+The letter 'g' is not in the word.
+
+--- Current State --- 
+You have 1 lives left.
+Word: - - - - u - - i - - 
+
+What is your next guess? 
+The letter 'h' is not in the word.
+
+--- Current State --- 
+You have 0 lives left.
+Word: - - - - u - - i - - 
+
+You used up your last guess and lost!
+The word was, cappuccino.

@@ -1,0 +1,58 @@
+Enter a word length: 
+--- Current State --- 
+You have 5 lives left.
+Word: - - - - - 
+
+What is your next guess? 
+The letter 'v' is in the word!
+
+--- Current State --- 
+You have 5 lives left.
+Word: v - - - - 
+
+What is your next guess? 
+The letter 'a' is not in the word.
+
+--- Current State --- 
+You have 4 lives left.
+Word: v - - - - 
+
+What is your next guess? 
+Invalid guess. Please enter a lowercase letter that you have not guessed yet : 
+The letter 'r' is in the word!
+
+--- Current State --- 
+You have 4 lives left.
+Word: v - r - - 
+
+What is your next guess? 
+The letter 'k' is not in the word.
+
+--- Current State --- 
+You have 3 lives left.
+Word: v - r - - 
+
+What is your next guess? 
+Invalid guess. Please enter a lowercase letter that you have not guessed yet : 
+The letter 'o' is not in the word.
+
+--- Current State --- 
+You have 2 lives left.
+Word: v - r - - 
+
+What is your next guess? 
+The letter 'p' is not in the word.
+
+--- Current State --- 
+You have 1 lives left.
+Word: v - r - - 
+
+What is your next guess? 
+The letter 'l' is not in the word.
+
+--- Current State --- 
+You have 0 lives left.
+Word: v - r - - 
+
+You used up your last guess and lost!
+The word was, verse.

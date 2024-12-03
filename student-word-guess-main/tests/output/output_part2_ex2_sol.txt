@@ -1,0 +1,49 @@
+Select a mode, neutral or evil : Enter a word length: 
+--- Current State --- 
+You have 5 lives left.
+Word: - - - - - 
+
+What is your next guess? 
+The letter 'a' is not in the word.
+
+--- Current State --- 
+You have 4 lives left.
+Word: - - - - - 
+
+What is your next guess? 
+The letter 'i' is not in the word.
+
+--- Current State --- 
+You have 3 lives left.
+Word: - - - - - 
+
+What is your next guess? 
+The letter 'e' is not in the word.
+
+--- Current State --- 
+You have 2 lives left.
+Word: - - - - - 
+
+What is your next guess? 
+The letter 'o' is in the word!
+
+--- Current State --- 
+You have 2 lives left.
+Word: - - o - - 
+
+What is your next guess? 
+The letter 'u' is not in the word.
+
+--- Current State --- 
+You have 1 lives left.
+Word: - - o - - 
+
+What is your next guess? 
+The letter 's' is not in the word.
+
+--- Current State --- 
+You have 0 lives left.
+Word: - - o - - 
+
+You used up your last guess and lost!
+The word was, block.

@@ -1,0 +1,49 @@
+Select a mode, neutral or evil : Enter a word length: 
+--- Current State --- 
+You have 5 lives left.
+Word: - - - 
+
+What is your next guess? 
+The letter 'l' is in the word!
+
+--- Current State --- 
+You have 5 lives left.
+Word: l - - 
+
+What is your next guess? 
+The letter 'b' is not in the word.
+
+--- Current State --- 
+You have 4 lives left.
+Word: l - - 
+
+What is your next guess? 
+The letter 'e' is not in the word.
+
+--- Current State --- 
+You have 3 lives left.
+Word: l - - 
+
+What is your next guess? 
+Invalid guess. Please enter a lowercase letter that you have not guessed yet : 
+The letter 'r' is not in the word.
+
+--- Current State --- 
+You have 2 lives left.
+Word: l - - 
+
+What is your next guess? 
+The letter 'o' is in the word!
+
+--- Current State --- 
+You have 2 lives left.
+Word: l o - 
+
+What is your next guess? 
+The letter 't' is in the word!
+
+--- Current State --- 
+You have 2 lives left.
+Word: l o t 
+
+You win! You guessed the word, lot.

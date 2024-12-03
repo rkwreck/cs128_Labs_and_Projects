@@ -1,0 +1,20 @@
+Enter a word length: 
+--- Current State --- 
+You have 5 lives left.
+Word: - - 
+
+What is your next guess? 
+The letter 'i' is in the word!
+
+--- Current State --- 
+You have 5 lives left.
+Word: i - 
+
+What is your next guess? 
+The letter 'd' is in the word!
+
+--- Current State --- 
+You have 5 lives left.
+Word: i d 
+
+You win! You guessed the word, id.
