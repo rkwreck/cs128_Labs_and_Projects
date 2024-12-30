@@ -75,6 +75,9 @@ public:
   // EFFECTS : Returns a single vector of all the motifs in the tree
   std::vector<Note> GenerateMelody();
 
+  void GenerateMelody_Helper(vector<Note>& all_motifs, MotifNode* tree); 
+
+
   // REQUIRES: This MusicalTree is valid
   // MODIFIES: This MusicalTree
   // EFFECTS : Removes all nodes from the tree that have a motif with a fitness
@@ -89,6 +92,18 @@ public:
 
   void RotationHelper(vector<MotifNode*> children, MotifNode* parent_node);
 
+  void FindMaxFitness(MotifNode* node_, double& max); 
+
+  vector<MotifNode*> SelectionPhase(); 
+
+  //void SelectionHelper(MotifNode* node_, double maxFitness, vector<MotifNode*>& selectedNodes);
+  void SelectionHelper(MotifNode* node_, double maxFitness, vector<MotifNode*>& selectedNodes, stringstream& ss); 
+
+
+  void ReproductionPhase(vector<MotifNode*> selectedNodes); 
+
+
+  void PrintFunction(stringstream& output); 
 
   // Part 1
   ~MusicalTree();
@@ -104,12 +119,18 @@ public:
 
   void PrintTree(MotifNode* current_);
 
+  //MY OWN FUNCTIONS
+  void CheckInvariants(); 
+
+  //int CheckSize(MotifNode* tree); 
+
+  void CheckSize(MotifNode* tree, int& size); 
+
+
+  bool CheckParent(MotifNode* tree); 
+
 
 private:
-
-  //MY OWN FUNCTION
- //bool CheckInvariants(); 
-
 
   //--------A few recommended functions below-----------
 
