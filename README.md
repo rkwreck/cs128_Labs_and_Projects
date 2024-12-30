@@ -1,9 +1,13 @@
 # MP = Coding projects (2-3 weeks) 
+-----------------------------------------------------------------------------------------------------------------------------
 
-## Musical Trees
+## MP Musical Trees
 
-## Seam Carver
+## MP Seam Carver
 
-## Hangman (Twisted Algorithm)
+## MP Hangman (Twisted Algorithm)
 
+-----------------------------------------------------------------------------------------------------------------------------
+
+# Labs 
 ## Lab 11 (more labs to be posted soon) 
