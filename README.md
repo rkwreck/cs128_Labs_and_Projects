@@ -1,4 +1,6 @@
-# MP = Coding projects (2-3 weeks) 
+# Projects VS Labs: 
+
+##  MP = Coding projects (2-3 weeks) 
 
 ### MP Musical Trees
 Detailed spec: https://www.cs128live.org/course-book/mps/MusicalTrees
@@ -13,7 +15,7 @@ Detailed spec: https://www.cs128live.org/course-book/mps/WordGuess
 Summary: A word-guessing game with a "neutral version" (Normal Hangman) and an "evil version." In the evil version, the algorithm does not pre-select a word. Instead, it continuoulsy filters through a dictionary with each guess that the user makes, maintaing as large of a subset of the dictionary as possible and not choosing a word until it is finally forced to. 
 
 
-# Labs (4-5 days) 
+## Labs (4-5 days) 
 More labs to be posted soon. 
 
 ### Lab 11 : Templated Balanced Binary Tree 
