@@ -115,17 +115,27 @@ public:
   // MY FUNCTIONS
   void DestructHelper(MotifNode* node_);  //this is basically a pop-all function
 
-  void setRoot(MotifNode* node) {root_ = node; }
+  void setRoot(MotifNode* node) {
+    //delete root_; //have to delete the old root first 
+    root_ = node; 
+    root_->SetNullParent(); 
+
+    //we also have to reset the size
+    int size = 0; 
+    CalculateSize(root_, size); 
+    size_ = size; 
+
+    //cout << "in SET ROOT, the size_ is : " << to_string(size_) << endl;
+  }
 
   void PrintTree(MotifNode* current_);
 
   //MY OWN FUNCTIONS
   void CheckInvariants(); 
 
-  //int CheckSize(MotifNode* tree); 
+  //int CheckSize_old(MotifNode* tree); 
 
-  void CheckSize(MotifNode* tree, int& size); 
-
+  void CalculateSize(MotifNode* tree, int& size); 
 
   bool CheckParent(MotifNode* tree); 
 

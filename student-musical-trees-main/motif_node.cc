@@ -120,27 +120,6 @@ bool MotifNode::ReplaceChildNode(MotifNode* new_child, MotifNode* old_child){
   if (new_child == nullptr){
     return true;  //do nothing 
   }
-  
-  //this is all correct BUT it assumes old_child is in children vector
-  //so we have to move it to a for loop first
-  // //set the new_child's parent to be this
-  // new_child->parent_ = old_child->parent_;
-
-  // //get the index of the old_child
-  // //this assumes that old child is in children_vector
-  
-  // int index = 0; 
-  // while (children_[index] != old_child){
-  //   index++; 
-  // } 
-
-  // //replace old_child with new_child BY INDEX
-  // children_[index] = new_child;
-
-  // delete old_child; 
-
-  // return true; 
-
   //use a for loop instead to make sure that old_child is actually in the children vector
   for (int i = 0; i < children_.size(); i++){
     if (children_[i] == old_child){
@@ -151,11 +130,8 @@ bool MotifNode::ReplaceChildNode(MotifNode* new_child, MotifNode* old_child){
       return true; 
     }
   }
-
   //default
   return false; 
-
-
 }
 
 // REQUIRES: node points to a valid non null MotifNode that IS currently
@@ -176,22 +152,11 @@ bool MotifNode::RemoveChildNode(MotifNode* node){
 }
 
 
-  //find the index of node
-//   int index = 0; 
-//   while (children_[index] != node){
-//     index++; 
-//   }
-//   //remove the index
-//   children_.erase(children_.begin() + index); 
-//   return true; 
-// }
-
 // REQUIRES:
 // MODIFIES: MotifNode
 // EFFECTS : Sets the parent of this MotifNode to nullptr.
 void MotifNode::SetNullParent(){
   parent_ = nullptr; 
-
 }
 
 // REQUIRES:
@@ -199,7 +164,6 @@ void MotifNode::SetNullParent(){
 // EFFECTS : Returns the parent of this MotifNode.
 MotifNode* MotifNode::GetParentNode() const{
   return parent_; 
-
 }
 
 // REQUIRES:
@@ -207,7 +171,6 @@ MotifNode* MotifNode::GetParentNode() const{
 // EFFECTS : Returns the motif of this MotifNode.
 const vector<Note>& MotifNode::GetMotif() const{
   return motif_; 
-
 }
 
 // REQUIRES:
@@ -222,7 +185,6 @@ const vector<MotifNode*>& MotifNode::GetChildren() const{
 // EFFECTS : Returns a the fitness score of this MotifNode
 double MotifNode::GetFitnessScore() const{
   return this->fitness_score_; 
-
 }
 
 // REQUIRES:
@@ -237,13 +199,7 @@ void MotifNode::SetFitnessScore(double val){
 
 
 
-
-
-
-///////  IGNORE THIS
-
-
-/*
+/* ARCHIVE (old code)
 
 // REQUIRES: new_child points to a valid non null MotifNode
 // MODIFIES: MotifNode and new_child

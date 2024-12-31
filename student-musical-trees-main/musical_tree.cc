@@ -7,11 +7,15 @@
 
 #include <sstream> 
 
-#define DEBUGGING 0
+#define PRE_EVOLVE_LOOP 4
+#define EVOLVE_LOOP     1
+#define THRESHOLD_STEP  5
+#define DEBUGGING 1
 // using namespace std;
 
 //MY OWN FUNCTION
 void MusicalTree::CheckInvariants(){
+  cout << "starting CHECK INVARIANTS call" << endl; 
   #if DEBUGGING
   // 1. Size is never less than 1, root node is always valid
   assert (size_ >= 1 && "size is less than 1"); 
@@ -24,7 +28,9 @@ void MusicalTree::CheckInvariants(){
 
   // 5. The size of the tree is the number of valid MotifNodes connected through the root.
   int size = 0;
-  CheckSize(root_, size); 
+  CalculateSize(root_, size); 
+  cout << "in INVARIANTS, root_: " << to_string(root_->GetFitnessScore()) << ", size_: " << to_string(size_) << endl; 
+  cout << "in INVARIANTS, this is output of CalculateSize: " << to_string(size) << endl; 
   assert (size_ == size); 
   #endif
 }
@@ -41,14 +47,14 @@ bool MusicalTree::CheckParent(MotifNode* tree){
       if (kid == tree){
         return true; 
       }
-    }
+    } 
+    return false;
   }
-  return false; 
+  return true; 
 }
 
 // int MusicalTree::CheckSize_old(MotifNode* tree){
   //   cout << "starting call, this is the node: " << to_string(tree->GetFitnessScore()) << endl; 
-    
   //   if (tree->GetChildren().size() == 0){ 
   //     return 1;
   //   }
@@ -57,21 +63,22 @@ bool MusicalTree::CheckParent(MotifNode* tree){
   //     return 1 + CheckSize(kid); 
   //   }
   //   return 0; 
-    
   // }
 
-void MusicalTree::CheckSize(MotifNode* tree, int& size){
-  //cout << "starting call, this is the node: " << to_string(tree->GetFitnessScore()) << endl; 
-  ++size;
-  
-  for (MotifNode* kid : tree->GetChildren()){
-    //cout << __LINE__ << " this is kid: " << to_string(kid->GetFitnessScore()) << endl; 
-    CheckSize(kid,size); 
-  }
-  //return 0; 
-  
-}
+void MusicalTree::CalculateSize(MotifNode* tree, int& size){
+  size++;
+  //cout << "starting CALCULATE SIZE call, root_ : " << to_string(root_->GetFitnessScore()) << endl;
+  //cout << "starting CHECK SIZE call, this is tree: " << to_string(tree->GetFitnessScore()) << endl; 
 
+  //cout << "this is how many children " << to_string(tree->GetFitnessScore()) << " has: " << to_string(tree->GetChildren().size()) << endl; 
+  for (MotifNode* kid : tree->GetChildren()){
+    //cout << "inside CHECK SIZE for loop, this is kid: " << to_string(kid->GetFitnessScore()) << " of " << to_string(tree->GetFitnessScore())<< endl; 
+    // cout << "this is the current size: " << to_string(size) << endl; 
+    CalculateSize(kid,size); 
+  }
+
+  //cout << "finished call, this is size: " << to_string(size) << endl; 
+}
 
 //------------------REQUIRED------------------------
 
@@ -90,7 +97,7 @@ MusicalTree::MusicalTree(bool verbose){
   root_ = node_0; 
 
   verbose_ = verbose; 
-  size_ = 0; 
+  size_ = 1; 
 }
 
 MusicalTree::MusicalTree(bool verbose, MotifNode* node_){  
@@ -105,15 +112,15 @@ MusicalTree::MusicalTree(bool verbose, MotifNode* node_, int size){
   size_ = size; 
 }
 
-// // REQUIRES: This MusicalTree is valid
-// // MODIFIES: This MusicalTree
-// // EFFECTS : Runs the entire genetic algorithm by evolving and pruning the
-// //           tree per the number of generations passed in
+// REQUIRES: This MusicalTree is valid
+// MODIFIES: This MusicalTree
+// EFFECTS : Runs the entire genetic algorithm by evolving and pruning the
+//           tree per the number of generations passed in
 void MusicalTree::GeneticAlgorithm(int numGenerations){
   stringstream ss; 
 
   //pre-evolve 
-  for (int i = 0; i < 3; i++){
+  for (int i = 0; i < PRE_EVOLVE_LOOP; i++){
     vector<MotifNode*> pre_evolve = SelectionPhase(); 
     CheckInvariants(); 
     ReproductionPhase(pre_evolve);
@@ -123,7 +130,7 @@ void MusicalTree::GeneticAlgorithm(int numGenerations){
   double threshold = 10; 
   //build generations
   for (int i = 0; i < numGenerations; i++){
-    for (int i = 0; i < 3; i++){
+    for (int i = 0; i < EVOLVE_LOOP; i++){
       vector<MotifNode*> selections = SelectionPhase(); 
       CheckInvariants(); 
       ReproductionPhase(selections);
@@ -143,10 +150,12 @@ void MusicalTree::GeneticAlgorithm(int numGenerations){
   while (size_ > 2){
     PruneNodes(root_, threshold);
     CheckInvariants(); 
-    threshold += 0.01; 
+    //threshold += 0.01; 
+    threshold += THRESHOLD_STEP; 
   }
 }
 
+// CONTROLS VERBOSE 
 void MusicalTree::PrintFunction(stringstream& output){
   if (verbose_){
     cout << output.str(); 
@@ -217,7 +226,6 @@ void MusicalTree::FindMaxFitness(MotifNode* node_, double& max){
   }
 }
 
-
 void MusicalTree::ReproductionPhase(vector<MotifNode*> selectedNodes){ 
   stringstream ss; 
   for (MotifNode* node_ : selectedNodes){ //for each selected node
@@ -271,7 +279,6 @@ void MusicalTree::ReproductionPhase(vector<MotifNode*> selectedNodes){
   PrintFunction(ss); 
 }
 
-
 // REQUIRES: This MusicalTree is valid
 // MODIFIES:
 // EFFECTS : Returns a single vector of all the motifs in the tree
@@ -300,11 +307,13 @@ void MusicalTree::GenerateMelody_Helper(vector<Note>& all_motifs, MotifNode* tre
 // Part 1
 void MusicalTree::PruneNodes(MotifNode* tree, double threshold){
   vector<MotifNode*> tree_children = tree->GetChildren(); //grab the original child vector
+
   stringstream ss; 
   ss << "PRUNE " << endl;
   ss << " size: " << size_ << endl;
   Prune_Helper(threshold, tree_children, tree); 
 
+  //printing requirements
   ss << "  prune cutoff: " << threshold << endl;
   ss << "  size: " << size_ << endl;
   PrintFunction(ss); 
@@ -312,6 +321,7 @@ void MusicalTree::PruneNodes(MotifNode* tree, double threshold){
 }
 
 void MusicalTree::Prune_Helper(double threshold, vector<MotifNode*> children, MotifNode* current_node){
+  //cout << "starting call, in PRUNE HELPER" << endl; 
   //if it's the last node, don't do anything 
   if (current_node->GetParentNode() == nullptr && children.size() == 0){
     return; 
@@ -320,18 +330,23 @@ void MusicalTree::Prune_Helper(double threshold, vector<MotifNode*> children, Mo
   //base case: if you have no children, just delete the node
   if ((children.size() == 0) && current_node->GetFitnessScore() < threshold){
     //before we delete, remove the node from whatever children vector it's in 
-    //cout << "entered base case, deleting this node: " << to_string(current_node->GetFitnessScore()) << endl;
-    current_node->GetParentNode()->RemoveChildNode(current_node); 
+    //cout << __LINE__ << " removing node: " << to_string(current_node->GetFitnessScore()) << endl; 
+    current_node->GetParentNode()->RemoveChildNode(current_node);
+     
     size_--; 
+    //cout << __LINE__ << " now the size_ is: " << to_string(size_) << endl;
   } else {
     for (MotifNode* child : children){
+      //cout << __LINE__ << " going into recursive call, size = " << to_string(size_) << endl; 
       Prune_Helper(threshold, child->GetChildren(), child); //check the children
+      //cout << __LINE__ << " after  recursive call, size = " << to_string(size_) << endl; 
     }
     if (current_node->GetFitnessScore() < threshold){
-      //cout << __LINE__ << " Before rotation, about to delete current_node :" << to_string(current_node->GetFitnessScore()) << endl; 
+      //cout << __LINE__ << " removing node: " << to_string(current_node->GetFitnessScore()) << endl; 
       RotationHelper(current_node->GetChildren(), current_node); //rotate & delete current_node
-      //cout << "finished rotation helper" << endl; 
-      size_--; 
+      //cout << __LINE__ << " now the size_ is: " << to_string(size_) << endl;
+      //size_--; 
+      //cout << __LINE__ << " now the size_ is: " << to_string(size_) << endl;
     }
   }
 }
@@ -342,10 +357,13 @@ void MusicalTree::RotationHelper(vector<MotifNode*> parents_children, MotifNode*
     if (parent_node->GetParentNode() == nullptr){ //if it's the root, DON'T delete it 
     } else{ 
       parent_node->GetParentNode()->RemoveChildNode(parent_node); 
+      //cout << __LINE__ << " entered this line " << endl; 
       size_--; 
     }
     return; 
   } 
+
+  //cout << __LINE__ << "   size = " << to_string(size_) << endl; 
   //the last child in the parents' children vector, D in sibling list <A, B, C, D> 
   MotifNode* last_child = parents_children[parents_children.size() - 1]; 
 
@@ -354,6 +372,7 @@ void MusicalTree::RotationHelper(vector<MotifNode*> parents_children, MotifNode*
     last_child->AddChildNode(parents_children[i]); 
   }
  
+  //cout << __LINE__ << "   size = " << to_string(size_) << endl; 
   //set the last_child's grandparent as its new parent
   MotifNode* last_childs_grandparent = last_child->GetParentNode()->GetParentNode(); 
 
@@ -361,10 +380,15 @@ void MusicalTree::RotationHelper(vector<MotifNode*> parents_children, MotifNode*
   if (last_childs_grandparent == nullptr){
     last_child->SetNullParent(); //then you're done
     setRoot(last_child); 
-    delete parent_node; 
+    delete parent_node;
+    //size_--;  
+    //cout << __LINE__ << "   size = " << to_string(size_) << endl; 
   } else {
     last_childs_grandparent->ReplaceChildNode(last_child, parent_node); 
+    size_--;
+    //cout << __LINE__ << "   size = " << to_string(size_) << endl; 
   }
+  //cout << __LINE__ << "   size = " << to_string(size_) << endl; 
 }
 
 
@@ -404,7 +428,7 @@ void MusicalTree::PrintTree(MotifNode* current){
 
 
 
-/* 
+/* ARCHIVE (old code)
 
 ///////// MY CODE
 
