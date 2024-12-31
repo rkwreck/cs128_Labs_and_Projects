@@ -1,6 +1,8 @@
 # About
 
-This repository is a back-up for all my work in UIUC's CS 128 Intro to CS II course. All code is written in C++. This READ.me contains basic descriptions of each lab & project: 
+This repository is a back-up for all my work in UIUC's CS 128 Intro to CS II course. This READ.me contains basic descriptions of each lab & project. 
+
+All code is written in C++. 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
