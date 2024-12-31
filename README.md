@@ -1,3 +1,5 @@
+# About
+
 This repository is a back-up for all my work in UIUC's CS 128 Intro to CS II course. All code is written in C++. This READ.me contains basic descriptions of each lab & project: 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -20,6 +22,7 @@ Detailed spec: https://www.cs128live.org/course-book/mps/WordGuess
 
 Summary: A word-guessing game with a "neutral version" (Normal Hangman) and an "evil version." In the evil version, the algorithm does not pre-select a word. Instead, it continuoulsy filters through a dictionary with each guess that the user makes, maintaing as large of a subset of the dictionary as possible and not choosing a word until it is finally forced to. 
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Labs (4-5 days) 
 More labs to be posted soon. 
