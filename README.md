@@ -2,7 +2,7 @@
 
 ##  MP = Coding projects (2-3 weeks) 
 
-### MP Musical Trees
+### MP Musical Trees using Genetic Algorithm
 Detailed spec: https://www.cs128live.org/course-book/mps/MusicalTrees
 
 Summary: Generates musical melodies through a genetic algorithm and trees. Genetic algorithm includes selection, reproduction, and pruning phases. 
