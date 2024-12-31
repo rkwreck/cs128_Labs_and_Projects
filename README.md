@@ -6,6 +6,7 @@ This repository is a back-up for all my work in UIUC's CS 128 Intro to CS II cou
 
 
 ##  MP = Coding projects (2-3 weeks) 
+Specs include diagrams/figures of expected output.
 
 ### MP Musical Trees using Genetic Algorithm
 Detailed spec: https://www.cs128live.org/course-book/mps/MusicalTrees
