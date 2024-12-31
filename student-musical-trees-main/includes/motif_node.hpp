@@ -101,7 +101,7 @@ private:
 
   double fitness_score_;
 
-  vector<MotifNode*> children_;
+  vector<MotifNode*> children_; 
 
   MotifNode* parent_;
 };
