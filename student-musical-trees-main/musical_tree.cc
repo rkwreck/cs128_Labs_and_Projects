@@ -7,9 +7,9 @@
 
 #include <sstream> 
 
-#define PRE_EVOLVE_LOOP 4
-#define EVOLVE_LOOP     1
-#define THRESHOLD_STEP  5
+#define PRE_EVOLVE_LOOP 3
+#define EVOLVE_LOOP     3
+#define THRESHOLD_STEP  0.01
 #define DEBUGGING 1
 // using namespace std;
 
