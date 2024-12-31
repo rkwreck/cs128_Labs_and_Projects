@@ -124,8 +124,6 @@ public:
     int size = 0; 
     CalculateSize(root_, size); 
     size_ = size; 
-
-    //cout << "in SET ROOT, the size_ is : " << to_string(size_) << endl;
   }
 
   void PrintTree(MotifNode* current_);
