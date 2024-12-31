@@ -1,4 +1,7 @@
-# Projects VS Labs: 
+This repository is a back-up for all my work in UIUC's CS 128 Intro to CS II course. All code is written in C++. This READ.me contains basic descriptions of each lab & project: 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 ##  MP = Coding projects (2-3 weeks) 
 
