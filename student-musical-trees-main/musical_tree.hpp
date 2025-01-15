@@ -92,12 +92,12 @@ public:
 
   void RotationHelper(vector<MotifNode*> children, MotifNode* parent_node);
 
-  void FindMaxFitness(MotifNode* node_, double& max); 
+  //void FindMaxFitness(MotifNode* node_, double& max); 
 
   vector<MotifNode*> SelectionPhase(); 
 
   //void SelectionHelper(MotifNode* node_, double maxFitness, vector<MotifNode*>& selectedNodes);
-  void SelectionHelper(MotifNode* node_, double maxFitness, vector<MotifNode*>& selectedNodes, stringstream& ss); 
+  void SelectionHelper(MotifNode* node_, vector<MotifNode*>& selectedNodes, stringstream& ss); 
 
 
   void ReproductionPhase(vector<MotifNode*> selectedNodes); 
