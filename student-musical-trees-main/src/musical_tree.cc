@@ -69,15 +69,20 @@ void MusicalTree::CalculateSize(MotifNode* tree, int& size){
 MusicalTree::MusicalTree(bool verbose){  
   //root_ = nullptr;
 
-  Note note_0 = Note(0, 0); 
-  vector<Note> root_motif; 
-  root_motif.push_back(note_0); 
+  // Note note_0 = Note(0, 0); 
+  // vector<Note> root_motif; 
+  // root_motif.push_back(note_0); 
+
+  vector<Note> root_motif = {{50, 0.1}, {78, 0.7}, {84, 0.7}, {61, 0.4}, {67, 0.1}, {78, 0.1}};
 
   MotifNode* node_0 = new MotifNode(root_motif);
   root_ = node_0; 
 
   verbose_ = verbose; 
   size_ = 1; 
+
+  //seed for later
+  srand(time(NULL)); 
 }
 
 MusicalTree::MusicalTree(bool verbose, MotifNode* node_){  
@@ -98,11 +103,17 @@ MusicalTree::MusicalTree(bool verbose, MotifNode* node_, int size){
 //           tree per the number of generations passed in
 void MusicalTree::GeneticAlgorithm(int numGenerations){
   stringstream ss; 
+  
 
   //pre-evolve 
   for (int i = 0; i < PRE_EVOLVE_LOOP; i++){
+    ss << "EVOLVE" << endl; //printing requirement 
+    PrintFunction(ss);
     vector<MotifNode*> pre_evolve = SelectionPhase(); 
     CheckInvariants(); 
+
+    // ss << "EVOLVE" << endl; //printing requirement 
+    // PrintFunction(ss);
     ReproductionPhase(pre_evolve);
     CheckInvariants(); 
   }
@@ -110,12 +121,25 @@ void MusicalTree::GeneticAlgorithm(int numGenerations){
   double threshold = 10; 
   //build generations
   for (int i = 0; i < numGenerations; i++){
+    threshold = 10; 
+    ss << "GEN " << i << " size: " << size_ << endl;
+    PrintFunction(ss); 
     for (int i = 0; i < EVOLVE_LOOP; i++){
+      ss << "EVOLVE" << endl; //printing requirement 
+      PrintFunction(ss);
+
       vector<MotifNode*> selections = SelectionPhase(); 
       CheckInvariants(); 
+
+      // ss << "EVOLVE" << endl; //printing requirement
+      // PrintFunction(ss); 
+
       ReproductionPhase(selections);
       CheckInvariants(); 
     }
+    ss << "PRUNE " << endl;
+    ss << " size: " << size_ << endl;
+    PrintFunction(ss); 
     while (size_ > 200){
       PruneNodes(root_, threshold);
       CheckInvariants(); 
@@ -151,20 +175,20 @@ vector<MotifNode*> MusicalTree::SelectionPhase(){
   PrintFunction(ss); 
  
   //find the max fitness score of the tree
-  double maxFitnessScore = -1; 
-  FindMaxFitness(root_, maxFitnessScore);
+  //double maxFitnessScore = -1; 
+  //FindMaxFitness(root_, maxFitnessScore);
 
   //now select 
   vector<MotifNode*> selectedNodes; 
-  SelectionHelper(root_, maxFitnessScore / 100, selectedNodes, ss); 
+  SelectionHelper(root_, selectedNodes, ss); 
 
   return selectedNodes; 
 }
 
 // ALSO ADDED THIS, helper function for selection
-void MusicalTree::SelectionHelper(MotifNode* node_, double maxFitness, vector<MotifNode*>& selectedNodes, stringstream& ss){
+void MusicalTree::SelectionHelper(MotifNode* node_, vector<MotifNode*>& selectedNodes, stringstream& ss){
   //get the selection probability, between 0 & 1
-  srand(time(0)); //seed for random later
+  //srand(time(0)); //seed for random later
   double selectionProb = ((double)rand()) / RAND_MAX;
 
   ss << "node: "; 
@@ -179,7 +203,7 @@ void MusicalTree::SelectionHelper(MotifNode* node_, double maxFitness, vector<Mo
   ss << "  Fitness_Score: " << node_->GetFitnessScore() << endl;
   ss << "  Selection Prob: " << selectionProb << endl;
 
-  if (selectionProb < maxFitness || selectionProb < 0.10){
+  if (selectionProb < node_->GetFitnessScore()/100 || selectionProb < 0.10){
     //node has been selected
     //PrintFunction(ss); 
     selectedNodes.push_back(node_);
@@ -191,20 +215,20 @@ void MusicalTree::SelectionHelper(MotifNode* node_, double maxFitness, vector<Mo
   PrintFunction(ss); 
 
   for (MotifNode* child : node_->GetChildren()){ //check all children
-    SelectionHelper(child, maxFitness, selectedNodes, ss);
+    SelectionHelper(child, selectedNodes, ss);
   }
 }
 
 // I ADDED THIS FUNCTION TOO
-void MusicalTree::FindMaxFitness(MotifNode* node_, double& max){ 
-  //if node_ fitness score > max --> max = fitness score 
-  if (node_->GetFitnessScore() > max){
-    max = node_->GetFitnessScore(); 
-  }
-  for (MotifNode* child : node_->GetChildren()){
-    FindMaxFitness(child, max);
-  }
-}
+// void MusicalTree::FindMaxFitness(MotifNode* node_, double& max){ 
+//   //if node_ fitness score > max --> max = fitness score 
+//   if (node_->GetFitnessScore() > max){
+//     max = node_->GetFitnessScore(); 
+//   }
+//   for (MotifNode* child : node_->GetChildren()){
+//     FindMaxFitness(child, max);
+//   }
+// }
 
 void MusicalTree::ReproductionPhase(vector<MotifNode*> selectedNodes){ 
   stringstream ss; 
@@ -289,8 +313,8 @@ void MusicalTree::PruneNodes(MotifNode* tree, double threshold){
   vector<MotifNode*> tree_children = tree->GetChildren(); //grab the original child vector
 
   stringstream ss; 
-  ss << "PRUNE " << endl;
-  ss << " size: " << size_ << endl;
+  // ss << "PRUNE " << endl;
+  // ss << " size: " << size_ << endl;
   Prune_Helper(threshold, tree_children, tree); 
 
   //printing requirements

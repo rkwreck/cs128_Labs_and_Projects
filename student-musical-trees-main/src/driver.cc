@@ -212,16 +212,16 @@ void Test_One_Generation(){
 void Test_Actual_Test_With_Genetic_Algo(){
   // Create MelodyGenerator object
 
-  vector<Note> root_motif = {{50, 0.1}, {78, 0.7}, {84, 0.7}, {61, 0.4}, {67, 0.1}, {78, 0.1}};
-  MotifNode* node_1 = new MotifNode(root_motif);
+  // vector<Note> root_motif = {{50, 0.1}, {78, 0.7}, {84, 0.7}, {61, 0.4}, {67, 0.1}, {78, 0.1}};
+  // MotifNode* node_1 = new MotifNode(root_motif);
 
   MusicalTree mt(true);
-  mt.setRoot(node_1); 
+  //mt.setRoot(node_1); 
 
-  cout << "this is the tree: " << endl; 
-  mt.PrintTree(mt.GetRoot()); 
+  // cout << "this is the tree: " << endl; 
+  // mt.PrintTree(mt.GetRoot()); 
 
-  mt.GeneticAlgorithm(1); 
+  mt.GeneticAlgorithm(3); 
   mt.CheckInvariants(); 
 
 }
@@ -374,7 +374,8 @@ void Test_Genetic_Algo_in_Main_with_Manual_Pre_Evolve(){
 
 int main() {
 
-  Test_Genetic_Algo_in_Main_with_Manual_Pre_Evolve();    
+  //Test_Genetic_Algo_in_Main_with_Manual_Pre_Evolve();  
+  Test_Actual_Test_With_Genetic_Algo(); 
 
 
   // /* ALL OTHER NODES
