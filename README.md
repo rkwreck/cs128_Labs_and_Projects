@@ -15,6 +15,8 @@ Detailed spec: https://www.cs128live.org/course-book/mps/MusicalTrees
 
 Summary: Generates musical melodies through a genetic algorithm and trees. Genetic algorithm includes selection, reproduction, and pruning phases. 
 
+motif_node.cc has my own creative adjustment (using A minor duration pitch + penalization for repetition)
+
 ### MP Seam Carver
 Detailed spec: https://www.cs128live.org/course-book/mps/SeamCarver
 
