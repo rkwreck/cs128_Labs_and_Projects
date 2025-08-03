@@ -22,7 +22,7 @@ Detailed spec: https://www.cs128live.org/course-book/mps/SeamCarver
 
 Summary: An algorithm that re-sizes an image by determining "seams" of an image that contain the least important pixels, and removing those seams. Adapted from the 2012 paper ["Seam Carving for Content-Aware Image Resizing"](https://perso.crans.org/frenoy/matlab2012/seamcarving.pdf). 
 
-### MP Hangman (Twisted Algorithm)
+### MP Hangman (Evil Algorithm)
 Detailed spec: https://www.cs128live.org/course-book/mps/WordGuess
 
 Summary: A word-guessing game with a "neutral version" (Normal Hangman) and an "evil version." In the evil version, the algorithm does not pre-select a word. Instead, it continuoulsy filters through a dictionary with each guess that the user makes, maintaing as large of a subset of the dictionary as possible and not choosing a word until it is finally forced to. 
